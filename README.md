@@ -1,1 +1,1 @@
-# BINUS-Hub-Account-Service
+# BINUS[Hub] Account Service

@@ -43,17 +43,49 @@ func getCourses(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, courses)
 }
 
+// createCourse creates a new course
+func createCourse(c *gin.Context) {
+	var newCourse course
+
+	if err := c.BindJSON(&newCourse); err != nil {
+		return
+	}
+
+	courses = append(courses, newCourse)
+	c.IndentedJSON(http.StatusCreated, newCourse)
+}
+
 // getClasses responds with the list of all classes in JSON format
 func getClasses(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, classes)
 }
 
+// createClass creates a new class
+func createClass(c *gin.Context) {
+	var newClass class
+
+	if err := c.BindJSON(&newClass); err != nil {
+		return
+	}
+
+	classes = append(classes, newClass)
+	c.IndentedJSON(http.StatusCreated, newClass)
+}
+
 // Setting up an association between the function and endpoints
 func main() {
 	router := gin.Default()
+	// REST API Account
 	router.GET("/accounts", getAccounts)
+
+	// REST API Course
 	router.GET("/courses", getCourses)
+	router.POST("/courses", createCourse)
+
+	// REST API Class
 	router.GET("/classes", getClasses)
+	router.POST("/classes", createClass)
+
 	router.Run("localhost:8080")
 
 }

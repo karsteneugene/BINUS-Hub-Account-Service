@@ -1,4 +1,4 @@
-module accounts_service
+module BINUS-HUB-Account-Service
 
 go 1.19
 

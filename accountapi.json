@@ -2,7 +2,7 @@
     "openapi":"3.0.3",
     "info": {
         "title":"Account Service",
-        "version":"1.0.0",
+        "version":"1.0.1",
         "description": "This spec lists all available endpoints related to the account service.",
         "contact": {
             "name": "Karsten Eugene Lie",
@@ -54,32 +54,37 @@
                             "application/json": {
                                 "example": [
                                     {
-                                        "account_id": "1",
+                                        "account_id": 1,
+                                        "binusian_id": "2440035596",
                                         "first_name": "Darren",
                                         "last_name": "Pangesa",
                                         "email": "darrenpangesa@binus.ac.id",
-                                        "role": "Admin"
+                                        "phone_no": "081219201007",
+                                        "role": "Admin",
+                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                                     },
                                     {
-                                        "account_id": "2",
+                                        "account_id": 2,
+                                        "binusian_id": "0000000001",
                                         "first_name": "John",
                                         "last_name": "Doe",
                                         "email": "johndoe@binus.ac.id",
-                                        "role": "Student"
+                                        "phone_no": "080123456789",
+                                        "role": "Student",
+                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                                     },
                                     {
-                                        "account_id": "3",
+                                        "account_id": 3,
+                                        "binusian_id": "0000000002",
                                         "first_name": "Jane",
                                         "last_name": "Smith",
                                         "email": "janesmith@binus.ac.id",
-                                        "role": "Lecturer"
-                                    },
-                                    {
-                                        "account_id": "",
-                                        "first_name": "",
-                                        "last_name": "",
-                                        "email": "",
-                                        "role": "Guest"
+                                        "phone_no": "089876543210",
+                                        "role": "Lecturer",
+                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                                     }
                                 ]
                             }
@@ -108,11 +113,15 @@
                                 "single":{
                                     "value":[
                                         {
-                                            "account_id": "3",
-                                            "first_name": "John",
-                                            "last_name": "Doe",
-                                            "email": "johndoe@binus.ac.id",
-                                            "role": "Student"
+                                            "account_id": 4,
+                                            "binusian_id": "3840000000",
+                                            "first_name": "Anya",
+                                            "last_name": "Forger",
+                                            "email": "anyaforger@binus.ac.id",
+                                            "phone_no": "081111111111",
+                                            "role": "Student",
+                                            "description": "Hi! I am a student.",
+                                            "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                                         }
                                     ]
                                 }
@@ -151,6 +160,9 @@
                     "type": "object",
                     "properties": {
                         "account_id": {
+                            "type":"integer"
+                        },
+                        "binusian_id": {
                             "type":"string"
                         },
                         "first_name": {
@@ -165,7 +177,19 @@
                             "type":"string",
                             "minLength": 1
                         },
+                        "phone_no": {
+                            "type":"string",
+                            "minLength": 1
+                        },
                         "role": {
+                            "type":"string",
+                            "minLength": 1
+                        },
+                        "description": {
+                            "type":"string",
+                            "minLength": 1
+                        },
+                        "profile_img": {
                             "type":"string",
                             "minLength": 1
                         }
@@ -175,4 +199,3 @@
         }
     }
 }
-    

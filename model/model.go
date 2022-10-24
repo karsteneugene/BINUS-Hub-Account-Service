@@ -22,14 +22,14 @@ type account struct {
 
 // Struct holding the course information
 type course struct {
-	ID           uint   `json:"id" gorm:"column:id;PRIMARY_KEY"`
-	Course_Name  string `json:"course_name"`
+	ID          uint   `json:"id" gorm:"column:id;PRIMARY_KEY"`
+	Course_Name string `json:"course_name"`
 }
 
 // Struct holding the class information
 type class struct {
-	ID           uint   `json:"id" gorm:"column:id;PRIMARY_KEY"`
-	Class_Name   string `json:"class_name"`
+	ID         uint   `json:"id" gorm:"column:id;PRIMARY_KEY"`
+	Class_Name string `json:"class_name"`
 }
 
 // Array holding account struct records

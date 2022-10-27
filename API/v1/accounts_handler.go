@@ -6,28 +6,31 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var accounts = []model.Account{{ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
+var accounts = []model.Account{{ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "Student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
 
 func GetAccounts(c *fiber.Ctx) error {
 	return c.JSON(accounts)
 }
 
-func SetAccount(c *fiber.Ctx, ID uint, Binusian_ID string, Fname string, Lname string, Email string, Phone_No string, Role string, Description string, Profile_Img string) error {
-	var NewAccount model.Account
+func SetAccount(c *fiber.Ctx) error {
+	NewAccount := new(model.Account)
 
-	NewAccount.ID = ID
-	NewAccount.Binusian_ID = Binusian_ID
-	NewAccount.Fname = Fname
-	NewAccount.Lname = Lname
-	NewAccount.Email = Email
+	c.BodyParser(NewAccount)
+
+	NewAccount.ID = 1
+	NewAccount.Binusian_ID = "2440035463"
+	NewAccount.Fname = "Karsten"
+	NewAccount.Lname = "Lie"
+	NewAccount.Email = "karsten.lie@binus.ac.id"
 	NewAccount.PasswordHash = ""
-	NewAccount.Phone_No = Phone_No
-	NewAccount.Role = Role
-	NewAccount.Description = Description
-	NewAccount.Profile_Img = Profile_Img
+	NewAccount.Phone_No = "082139311197"
+	NewAccount.Role = "Student"
+	NewAccount.Description = "Lorem ipsum"
+	NewAccount.Profile_Img = "https://www.youtube.com/shorts/AWOyEIuVzzQ"
 
-	accounts = make([]model.Account, len(accounts)+1)
-	return c.JSON(accounts)
+	// accounts = make([]model.Account, len(accounts)+1)
+	accounts = append(accounts, *NewAccount)
+	return c.JSON(NewAccount)
 }
 
 // // Array holding account struct records

@@ -30,5 +30,6 @@ func Api() *fiber.App {
 
 	// Check health of v1 path
 	v1.Get("/accounts", apiv1.GetAccounts)
+	v1.Post("/accounts", apiv1.SetAccount)
 	return app
 }

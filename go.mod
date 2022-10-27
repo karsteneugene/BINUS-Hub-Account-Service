@@ -1,4 +1,4 @@
-module BINUS-HUB-Account-Service
+module github.com/karsteneugene/BINUS-Hub-Account-Service
 
 go 1.19
 

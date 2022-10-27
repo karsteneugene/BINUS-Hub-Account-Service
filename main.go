@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	api "BINUS-HUB-Account-Service/API"
-	"BINUS-HUB-Account-Service/setting"
+	api "github.com/karsteneugene/BINUS-Hub-Account-Service/API"
+
+	"github.com/karsteneugene/BINUS-Hub-Account-Service/setting"
 )
 
 var swaggerparam setting.Swagger

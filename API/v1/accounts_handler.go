@@ -1,7 +1,7 @@
 package apiv1
 
 import (
-	model "BINUS-HUB-Account-Service/model"
+	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 
 	"github.com/gofiber/fiber/v2"
 )

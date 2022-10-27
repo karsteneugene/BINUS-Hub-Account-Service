@@ -5,7 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 
-	apiv1 "BINUS-HUB-Account-Service/API/v1"
+	apiv1 "github.com/karsteneugene/BINUS-Hub-Account-Service/API/v1"
 )
 
 func middleware(c *fiber.Ctx) error {

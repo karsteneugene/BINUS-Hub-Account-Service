@@ -1,201 +1,293 @@
 {
-    "openapi":"3.0.3",
+    "openapi": "3.0.3",
     "info": {
-        "title":"Account Service",
-        "version":"1.0.1",
-        "description": "This spec lists all available endpoints related to the account service.",
-        "contact": {
-            "name": "Karsten Eugene Lie",
-            "email": "karsten.lie@binus.ac.id"
-        }
+      "title": "Account Service",
+      "version": "1.1.0",
+      "description": "This spec lists all available endpoints related to the account service.",
+      "contact": {
+        "name": "Karsten Eugene Lie",
+        "email": "karsten.lie@binus.ac.id"
+      }
     },
     "servers": [
-        {
-            "url": "http://localhost:8080/api/v1",
-            "description": "AWS",
-            "variables": {
-            "subdomain": {
-                "enum": ["dev","prod"],
-                "default": "dev"
-                }
-            }
-        },
-        {
-            "url": "http://localhost:8080/api/v1",
-            "description": "GCP",
-            "variables": {
-            "subdomain": {
-                "enum": ["dev","prod"],
-                "default": "dev"
-                }
-            }
+      {
+        "url": "http://localhost:8080/api/v1",
+        "description": "AWS",
+        "variables": {
+          "subdomain": {
+            "enum": [
+              "dev",
+              "prod"
+            ],
+            "default": "dev"
+          }
         }
+      },
+      {
+        "url": "http://localhost:8080/api/v1",
+        "description": "GCP",
+        "variables": {
+          "subdomain": {
+            "enum": [
+              "dev",
+              "prod"
+            ],
+            "default": "dev"
+          }
+        }
+      }
     ],
     "tags": [
-        {"name": "Query","description": "All endpoints related to get accounts"},
-        {"name": "Create","description": "All endpoints related to creating accounts"},
-        {"name": "Update","description": "All endpoints related to updating accounts"},
-        {"name": "Delete","description": "All endpoints related to deleting accounts"}
+      {
+        "name": "Query",
+        "description": "All endpoints related to get accounts"
+      },
+      {
+        "name": "Create",
+        "description": "All endpoints related to creating accounts"
+      },
+      {
+        "name": "Patch",
+        "description": "All endpoints related to updating accounts"
+      },
+      {
+        "name": "Delete",
+        "description": "All endpoints related to deleting accounts"
+      }
     ],
     "paths": {
-        "/accounts": {
-            "get": {
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "tags": ["Query"],
-                "summary": "Get some or all accounts",
-                "responses": {
-                    "200": {
-                        "description": "Accounts to be returned",
-                        "content": {
-                            "application/json": {
-                                "example": [
-                                    {
-                                        "account_id": 1,
-                                        "binusian_id": "2440035596",
-                                        "first_name": "Darren",
-                                        "last_name": "Pangesa",
-                                        "email": "darrenpangesa@binus.ac.id",
-                                        "phone_no": "081219201007",
-                                        "role": "Admin",
-                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
-                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                                    },
-                                    {
-                                        "account_id": 2,
-                                        "binusian_id": "0000000001",
-                                        "first_name": "John",
-                                        "last_name": "Doe",
-                                        "email": "johndoe@binus.ac.id",
-                                        "phone_no": "080123456789",
-                                        "role": "Student",
-                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
-                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                                    },
-                                    {
-                                        "account_id": 3,
-                                        "binusian_id": "0000000002",
-                                        "first_name": "Jane",
-                                        "last_name": "Smith",
-                                        "email": "janesmith@binus.ac.id",
-                                        "phone_no": "089876543210",
-                                        "role": "Lecturer",
-                                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
-                                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                                    }
-                                ]
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "Authorization": []
-                    }
-                ],
-                "tags": ["Create"],
-                "summary": "Post a new account",
-                "description": "Create a new account",
-                "requestBody": {
-                    "required": true,
-                    "description": "Request body to create an account",
-                    "content": {
-                        "application/json":{
-                            "schema":{
-                                "$ref": "#/components/schemas/Accounts"
-                            },
-                            "examples": {
-                                "single":{
-                                    "value":[
-                                        {
-                                            "account_id": 4,
-                                            "binusian_id": "3840000000",
-                                            "first_name": "Anya",
-                                            "last_name": "Forger",
-                                            "email": "anyaforger@binus.ac.id",
-                                            "phone_no": "081111111111",
-                                            "role": "Student",
-                                            "description": "Hi! I am a student.",
-                                            "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200":{
-                        "description": "Account is created",
-                        "content": {
-                            "application/json":{
-                                "example":{
-                                    "message": "The account was successfully created."
-                                }
-                            }
-                        }
-                    }
-                }
+      "/accounts": {
+        "get": {
+          "security": [
+            {
+              "Authorization": []
             }
+          ],
+          "tags": [
+            "Query"
+          ],
+          "summary": "Get some or all accounts",
+          "responses": {
+            "200": {
+              "description": "Accounts to be returned",
+              "content": {
+                "application/json": {
+                  "example": [
+                    {
+                      "account_id": 1,
+                      "binusian_id": "2440035596",
+                      "first_name": "Darren",
+                      "last_name": "Pangesa",
+                      "email": "darrenpangesa@binus.ac.id",
+                      "phone_no": "081219201007",
+                      "role": "Admin",
+                      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                    },
+                    {
+                      "account_id": 2,
+                      "binusian_id": "0000000001",
+                      "first_name": "John",
+                      "last_name": "Doe",
+                      "email": "johndoe@binus.ac.id",
+                      "phone_no": "080123456789",
+                      "role": "Student",
+                      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                    },
+                    {
+                      "account_id": 3,
+                      "binusian_id": "0000000002",
+                      "first_name": "Jane",
+                      "last_name": "Smith",
+                      "email": "janesmith@binus.ac.id",
+                      "phone_no": "089876543210",
+                      "role": "Lecturer",
+                      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "security": [
+            {
+              "Authorization": []
+            }
+          ],
+          "tags": [
+            "Create"
+          ],
+          "summary": "Post a new account",
+          "description": "Create a new account",
+          "requestBody": {
+            "required": true,
+            "description": "Request body to create an account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts"
+                },
+                "examples": {
+                  "single": {
+                    "value": [
+                      {
+                        "account_id": 4,
+                        "binusian_id": "3840000000",
+                        "first_name": "Anya",
+                        "last_name": "Forger",
+                        "email": "anyaforger@binus.ac.id",
+                        "phone_no": "081111111111",
+                        "role": "Student",
+                        "description": "Hi! I am a student.",
+                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account is created",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "message": "The account was successfully created."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "security": [
+            {
+              "Authorization": []
+            }
+          ],
+          "tags": [
+            "Patch"
+          ],
+          "summary": "Update an account",
+          "description": "Update an account",
+          "requestBody": {
+            "required": true,
+            "description": "Request body to update an account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts"
+                },
+                "examples": {
+                  "single": {
+                    "value": [
+                      {
+                        "account_id": 4,
+                        "description": "I like peanuts.",
+                        "profile_img": "https://www.youtube.com/shorts/K-RabQ9lPtg"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Account is updated",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "message": "The account was successfully updated."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "security": [
+            {
+              "Authorization": []
+            }
+          ],
+          "tags": [
+            "Delete"
+          ],
+          "summary": "Delete an account",
+          "description": "Delete an account",
+          "responses": {
+            "200": {
+              "description": "Account is deleted",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "message": "The account was successfully deleted."
+                  }
+                }
+              }
+            }
+          }
         }
+      }
     },
     "components": {
-        "securitySchemes": {
-            "Authorization": {
-                "type": "http",
-                "scheme": "bearer",
-                "bearerFormat": "JWT",
-                "description": "Please enter the access token."
-            }
-        },
-        "schemas": {
-            "Accounts":{
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "account_id": {
-                            "type":"integer"
-                        },
-                        "binusian_id": {
-                            "type":"string"
-                        },
-                        "first_name": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "last_name": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "email": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "phone_no": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "role": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "description": {
-                            "type":"string",
-                            "minLength": 1
-                        },
-                        "profile_img": {
-                            "type":"string",
-                            "minLength": 1
-                        }
-                    }
-                }
-            }
+      "securitySchemes": {
+        "Authorization": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT",
+          "description": "Please enter the access token."
         }
+      },
+      "schemas": {
+        "Accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "account_id": {
+                "type": "integer"
+              },
+              "binusian_id": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "last_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "email": {
+                "type": "string",
+                "minLength": 1
+              },
+              "phone_no": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "profile_img": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
     }
-}
+  }

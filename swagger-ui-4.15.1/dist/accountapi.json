@@ -1,108 +1,314 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-      "title": "Account Service",
-      "version": "1.1.0",
-      "description": "This spec lists all available endpoints related to the account service.",
-      "contact": {
-        "name": "Karsten Eugene Lie",
-        "email": "karsten.lie@binus.ac.id"
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Account Service",
+    "version": "1.1.1",
+    "description": "This spec lists all available endpoints related to the account service.",
+    "contact": {
+      "name": "Karsten Eugene Lie",
+      "email": "karsten.lie@binus.ac.id"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "AWS",
+      "variables": {
+        "subdomain": {
+          "enum": [
+            "dev",
+            "prod"
+          ],
+          "default": "dev"
+        }
       }
     },
-    "servers": [
-      {
-        "url": "http://localhost:8080/api/v1",
-        "description": "AWS",
-        "variables": {
-          "subdomain": {
-            "enum": [
-              "dev",
-              "prod"
-            ],
-            "default": "dev"
-          }
-        }
-      },
-      {
-        "url": "http://localhost:8080/api/v1",
-        "description": "GCP",
-        "variables": {
-          "subdomain": {
-            "enum": [
-              "dev",
-              "prod"
-            ],
-            "default": "dev"
-          }
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "GCP",
+      "variables": {
+        "subdomain": {
+          "enum": [
+            "dev",
+            "prod"
+          ],
+          "default": "dev"
         }
       }
-    ],
-    "tags": [
-      {
-        "name": "Query",
-        "description": "All endpoints related to get accounts"
-      },
-      {
-        "name": "Create",
-        "description": "All endpoints related to creating accounts"
-      },
-      {
-        "name": "Patch",
-        "description": "All endpoints related to updating accounts"
-      },
-      {
-        "name": "Delete",
-        "description": "All endpoints related to deleting accounts"
-      }
-    ],
-    "paths": {
-      "/accounts": {
-        "get": {
-          "security": [
-            {
-              "Authorization": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Query",
+      "description": "All endpoints related to get accounts"
+    },
+    {
+      "name": "Create",
+      "description": "All endpoints related to creating accounts"
+    },
+    {
+      "name": "Patch",
+      "description": "All endpoints related to updating accounts"
+    },
+    {
+      "name": "Delete",
+      "description": "All endpoints related to deleting accounts"
+    }
+  ],
+  "paths": {
+    "/students": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Query"
+        ],
+        "summary": "Get some or all student accounts",
+        "responses": {
+          "200": {
+            "description": "Student accounts to be returned",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "student_id": "2440035596",
+                    "first_name": "Darren",
+                    "last_name": "Pangesa",
+                    "email": "darrenpangesa@binus.ac.id",
+                    "phone_no": "081219201007",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
+                    "class_id": "L5AC"
+                  },
+                  {
+                    "student_id": "2440035463",
+                    "first_name": "Karsten",
+                    "last_name": "Lie",
+                    "email": "karsten.lie@binus.ac.id",
+                    "phone_no": "082139311197",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
+                    "class_id": "L5AC"
+                  },
+                  {
+                    "student_id": "2440032474",
+                    "first_name": "Ellyz",
+                    "last_name": "Yaory",
+                    "email": "ellyz.yaory@binus.ac.id",
+                    "phone_no": "087732171711",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
+                    "class_id": "L5AC"
+                  }
+                ]
+              }
             }
-          ],
-          "tags": [
-            "Query"
-          ],
-          "summary": "Get some or all accounts",
-          "responses": {
-            "200": {
-              "description": "Accounts to be returned",
-              "content": {
-                "application/json": {
-                  "example": [
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Create"
+        ],
+        "summary": "Post a new student account",
+        "description": "Create a new student account",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to create a student account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Students"
+              },
+              "examples": {
+                "single": {
+                  "value": [
                     {
-                      "account_id": 1,
-                      "binusian_id": "2440035596",
-                      "first_name": "Darren",
-                      "last_name": "Pangesa",
-                      "email": "darrenpangesa@binus.ac.id",
-                      "phone_no": "081219201007",
-                      "role": "Admin",
-                      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
-                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                    },
+                      "student_id": "3840000001",
+                      "first_name": "Anya",
+                      "last_name": "Forger",
+                      "email": "anya.forger@binus.ac.id",
+                      "phone_no": "082123456789",
+                      "description": "Hi! I am a student.",
+                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
+                      "class_id": "L1AC"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Student account is created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The student account was successfully created."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Patch"
+        ],
+        "summary": "Update a student account",
+        "description": "Update a student account",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to update a student account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Students"
+              },
+              "examples": {
+                "single": {
+                  "value": [
                     {
-                      "account_id": 2,
-                      "binusian_id": "0000000001",
-                      "first_name": "John",
-                      "last_name": "Doe",
-                      "email": "johndoe@binus.ac.id",
-                      "phone_no": "080123456789",
-                      "role": "Student",
-                      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
-                      "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                    },
+                      "binusian_id": "3840000001",
+                      "description": "I like peanuts.",
+                      "profile_img": "https://www.youtube.com/shorts/K-RabQ9lPtg"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Student account is updated",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The student account was successfully updated."
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a student account",
+        "description": "Delete a student account",
+        "responses": {
+          "200": {
+            "description": "Student account is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The student account was successfully deleted."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lecturers": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Query"
+        ],
+        "summary": "Get some or all lecturer accounts",
+        "responses": {
+          "200": {
+            "description": "Lecturer accounts to be returned",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "lecturer_id": "D6405",
+                    "first_name": "Ardimas",
+                    "last_name": "Purwita",
+                    "email": "ardimas.purwita@binus.ac.id",
+                    "phone_no": "081112345678",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                  },
+                  {
+                    "lecturer_id": "D6211",
+                    "first_name": "Nunung",
+                    "last_name": "Qomariyah",
+                    "email": "nunung.qomariyah@binus.ac.id",
+                    "phone_no": "082112345678",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                  },
+                  {
+                    "lecturer_id": "D3697",
+                    "first_name": "Maria",
+                    "last_name": "Astriani",
+                    "email": "maria.astriani@binus.ac.id",
+                    "phone_no": "083112345678",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
+                    "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Create"
+        ],
+        "summary": "Post a new lecturer account",
+        "description": "Create a new lecturer account",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to create a lecturer account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lecturers"
+              },
+              "examples": {
+                "single": {
+                  "value": [
                     {
-                      "account_id": 3,
-                      "binusian_id": "0000000002",
-                      "first_name": "Jane",
-                      "last_name": "Smith",
-                      "email": "janesmith@binus.ac.id",
-                      "phone_no": "089876543210",
-                      "role": "Lecturer",
+                      "lecturer_id": "D9900",
+                      "first_name": "Loid",
+                      "last_name": "Forger",
+                      "email": "loid.forger@binus.ac.id",
+                      "phone_no": "084112345678",
                       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                       "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                     }
@@ -112,123 +318,83 @@
             }
           }
         },
-        "post": {
-          "security": [
-            {
-              "Authorization": []
-            }
-          ],
-          "tags": [
-            "Create"
-          ],
-          "summary": "Post a new account",
-          "description": "Create a new account",
-          "requestBody": {
-            "required": true,
-            "description": "Request body to create an account",
+        "responses": {
+          "200": {
+            "description": "Lecturer account is created",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts"
-                },
-                "examples": {
-                  "single": {
-                    "value": [
-                      {
-                        "account_id": 4,
-                        "binusian_id": "3840000000",
-                        "first_name": "Anya",
-                        "last_name": "Forger",
-                        "email": "anyaforger@binus.ac.id",
-                        "phone_no": "081111111111",
-                        "role": "Student",
-                        "description": "Hi! I am a student.",
-                        "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-                      }
-                    ]
-                  }
+                "example": {
+                  "message": "The lecturer account was successfully created."
                 }
               }
             }
-          },
-          "responses": {
-            "200": {
-              "description": "Account is created",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "message": "The account was successfully created."
-                  }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Patch"
+        ],
+        "summary": "Update a lecturer account",
+        "description": "Update a lecturer account",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to update a lecturer account",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lecturers"
+              },
+              "examples": {
+                "single": {
+                  "value": [
+                    {
+                      "lecturer_id": "D9900",
+                      "description": "I am not a spy.",
+                      "profile_img": "https://www.youtube.com/shorts/K-RabQ9lPtg"
+                    }
+                  ]
                 }
               }
             }
           }
         },
-        "patch": {
-          "security": [
-            {
-              "Authorization": []
-            }
-          ],
-          "tags": [
-            "Patch"
-          ],
-          "summary": "Update an account",
-          "description": "Update an account",
-          "requestBody": {
-            "required": true,
-            "description": "Request body to update an account",
+        "responses": {
+          "200": {
+            "description": "Lecturer account is updated",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts"
-                },
-                "examples": {
-                  "single": {
-                    "value": [
-                      {
-                        "account_id": 4,
-                        "description": "I like peanuts.",
-                        "profile_img": "https://www.youtube.com/shorts/K-RabQ9lPtg"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Account is updated",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "message": "The account was successfully updated."
-                  }
+                "example": {
+                  "message": "The lecturer account was successfully updated."
                 }
               }
             }
           }
-        },
-        "delete": {
-          "security": [
-            {
-              "Authorization": []
-            }
-          ],
-          "tags": [
-            "Delete"
-          ],
-          "summary": "Delete an account",
-          "description": "Delete an account",
-          "responses": {
-            "200": {
-              "description": "Account is deleted",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "message": "The account was successfully deleted."
-                  }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a lecturer account",
+        "description": "Delete a lecturer account",
+        "responses": {
+          "200": {
+            "description": "Lecturer account is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The lecturer account was successfully deleted."
                 }
               }
             }
@@ -236,58 +402,433 @@
         }
       }
     },
-    "components": {
-      "securitySchemes": {
-        "Authorization": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT",
-          "description": "Please enter the access token."
+    "/classes": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Query"
+        ],
+        "summary": "Get some or all classes",
+        "responses": {
+          "200": {
+            "description": "Classes to be returned",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "class_id": "L5AC",
+                    "class_description": "Computer Science 5th Semester Class A"
+                  },
+                  {
+                    "class_id": "L5BC",
+                    "class_description": "Computer Science 5th Semester Class A"
+                  }
+                ]
+              }
+            }
+          }
         }
       },
-      "schemas": {
-        "Accounts": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "account_id": {
-                "type": "integer"
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Create"
+        ],
+        "summary": "Post a new class",
+        "description": "Create a new class",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to create a new class",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Classes"
               },
-              "binusian_id": {
-                "type": "string"
+              "examples": {
+                "single": {
+                  "value": [
+                    {
+                      "class_id": "L5CC",
+                      "class_description": "Computer Science 5th Semester Class C"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Class is created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The class was successfully created."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Patch"
+        ],
+        "summary": "Update a class",
+        "description": "Update a class",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to update a class",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Classes"
               },
-              "first_name": {
-                "type": "string",
-                "minLength": 1
+              "examples": {
+                "single": {
+                  "value": [
+                    {
+                      "class_id": "L5CC",
+                      "class_description": "Non-existent class"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Class is updated",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The class was successfully updated."
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a class",
+        "description": "Delete a class",
+        "responses": {
+          "200": {
+            "description": "Class is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The class was successfully deleted."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/courses": {
+      "get": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Query"
+        ],
+        "summary": "Get some or all courses",
+        "responses": {
+          "200": {
+            "description": "Courses to be returned",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": "1",
+                    "course_id": "COMP6705001",
+                    "course_name": "Distributed Systems",
+                    "class_id": "L5AC",
+                    "lecturer_id": "D6405"
+                  },
+                  {
+                    "id": "2",
+                    "course_id": "COMP6345001",
+                    "course_name": "Intelligent Systems",
+                    "class_id": "L5AC",
+                    "lecturer_id": "D6211"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Create"
+        ],
+        "summary": "Post a new course",
+        "description": "Create a new course",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to create a new course",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Courses"
               },
-              "last_name": {
-                "type": "string",
-                "minLength": 1
+              "examples": {
+                "single": {
+                  "value": [
+                    {
+                      "id": "3",
+                      "course_id": "COMP6696001",
+                      "course_name": "Research Methodology in Computer Science",
+                      "class_id": "L5AC",
+                      "lecturer_id": "D3697"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Course is created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The course was successfully created."
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Patch"
+        ],
+        "summary": "Update a course",
+        "description": "Update a course",
+        "requestBody": {
+          "required": true,
+          "description": "Request body to update a course",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Courses"
               },
-              "email": {
-                "type": "string",
-                "minLength": 1
-              },
-              "phone_no": {
-                "type": "string",
-                "minLength": 1
-              },
-              "role": {
-                "type": "string",
-                "minLength": 1
-              },
-              "description": {
-                "type": "string",
-                "minLength": 1
-              },
-              "profile_img": {
-                "type": "string",
-                "minLength": 1
+              "examples": {
+                "single": {
+                  "value": [
+                    {
+                      "id": "3",
+                      "lecturer_id": "D6211"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Course is updated",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The course was successfully updated."
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a course",
+        "description": "Delete a course",
+        "responses": {
+          "200": {
+            "description": "Course is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The course was successfully deleted."
+                }
               }
             }
           }
         }
       }
     }
+  },
+  "components": {
+    "securitySchemes": {
+      "Authorization": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Please enter the access token."
+      }
+    },
+    "schemas": {
+      "Students": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "student_id": {
+              "type": "string"
+            },
+            "first_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "last_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "phone_no": {
+              "type": "string",
+              "minLength": 12
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "profile_img": {
+              "type": "string",
+              "minLength": 1
+            },
+            "class_id": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Lecturers": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "lecturer_id": {
+              "type": "string"
+            },
+            "first_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "last_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "phone_no": {
+              "type": "string",
+              "minLength": 12
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "profile_img": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "Classes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "class_id": {
+              "type": "string"
+            },
+            "class_description": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "Courses": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "course_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "course_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "class_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lecturer_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
   }
+}

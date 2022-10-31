@@ -11,12 +11,12 @@ func TestAccountsModel(t *testing.T) {
 	validateCourse := validator.New()
 	validateClass := validator.New()
 
-	account := Account{
-		ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>",
+	account := Student{
+		Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>",
 	}
 
 	course := Course{
-		ID: 0, Course_Name: "Distributed System",
+		Course_ID: "0", Course_Name: "Distributed System", Class_ID: "L1AC", Lecturer_ID: "D6059",
 	}
 
 	class := Class{

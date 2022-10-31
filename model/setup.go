@@ -7,7 +7,6 @@ import (
 	// "database/sql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
 )
 
 var dbConn *gorm.DB

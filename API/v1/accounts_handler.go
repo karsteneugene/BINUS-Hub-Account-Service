@@ -6,18 +6,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var accounts = []model.Account{{ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "Student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
+var accounts = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "Student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
 
 func GetAccounts(c *fiber.Ctx) error {
 	return c.JSON(accounts)
 }
 
 func SetAccount(c *fiber.Ctx) error {
-	NewAccount := new(model.Account)
+	NewAccount := new(model.Student)
 
 	c.BodyParser(NewAccount)
 
-	NewAccount.ID = 1
 	NewAccount.Binusian_ID = "2440035463"
 	NewAccount.Fname = "Karsten"
 	NewAccount.Lname = "Lie"

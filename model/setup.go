@@ -13,9 +13,12 @@ var dbConn *gorm.DB
 
 // Connect : Create a database sql connection
 func Connect() {
-	// ellyz dbadmin:password
+
 	// Darren root:Scorch120403
-	db, err := gorm.Open(mysql.Open("dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc"))
+	db, err := gorm.Open(mysql.Open("root:Scorch120403@tcp(127.0.0.1:3306)/accounts_svc"))
+
+	// ellyz dbadmin:password
+	//db, err := gorm.Open(mysql.Open("dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc"))
 
 	if err != nil {
 		panic(err)

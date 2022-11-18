@@ -20,7 +20,7 @@ func handler(c *fiber.Ctx) error {
 
 
 func Api() *fiber.App {
-	
+
 	model.Connect()
 
 	// Webserver

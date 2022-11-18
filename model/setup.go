@@ -21,7 +21,9 @@ func Connect() {
 
 	fmt.Println("Connection Opened to Database")
 
-	db.AutoMigrate(&Class{})
+	db.AutoMigrate(&Class{}, &Student{})
+
+
 
 	dbConn = db
 }

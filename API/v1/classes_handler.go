@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var classes = []model.Class{{ID: 0, Class_Name: "L4AC"}}
+var classes = []model.Class{{ID: "L5AC", Class_Name: "L4AC"}}
 
 func GetClasses(c *fiber.Ctx) error {
 	return c.JSON(classes)
@@ -17,7 +17,7 @@ func SetClasses(c *fiber.Ctx) error {
 
 	c.BodyParser(NewClass)
 
-	NewClass.ID = 1
+	NewClass.ID = "L5AC"
 	NewClass.Class_Name = "L4BC"
 
 	classes = append(classes, *NewClass)

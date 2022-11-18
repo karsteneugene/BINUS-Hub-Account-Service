@@ -13,6 +13,7 @@ var dbConn *gorm.DB
 
 // Connect : Create a database sql connection
 func Connect() {
+	// ellyz dbadmin:password
 	db, err := gorm.Open(mysql.Open("dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc"))
 
 	if err != nil {

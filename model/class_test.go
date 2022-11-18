@@ -10,7 +10,7 @@ func TestClassModel(t *testing.T) {
 	validateClass := validator.New()
 
 	class := Class{
-		ID: "L5AC", Class_Name: "L4AC",
+		ID: "L5AC", Class_Desc: "L4AC",
 	}
 
 	errClass := validateClass.Struct(class)

@@ -10,7 +10,7 @@ func TestLecturerModel(t *testing.T) {
 	validateLecturer := validator.New()
 
 	lecturer := Lecturer{
-		Lecturer_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>",
+		Lecturer_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum", Profile_Img: "<path of image>",
 	}
 
 	errLecturer := validateLecturer.Struct(lecturer)

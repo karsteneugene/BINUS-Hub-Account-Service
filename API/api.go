@@ -4,10 +4,9 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 	apiv1 "github.com/karsteneugene/BINUS-Hub-Account-Service/API/v1"
+	"github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 )
-
 
 func middleware(c *fiber.Ctx) error {
 	return c.Next()
@@ -17,7 +16,6 @@ func handler(c *fiber.Ctx) error {
 	c.Status(fiber.StatusOK)
 	return c.SendString(c.Path())
 }
-
 
 func Api() *fiber.App {
 
@@ -35,8 +33,10 @@ func Api() *fiber.App {
 	v1 := api.Group("/v1", middleware)
 
 	// Check health of v1 path
-	v1.Get("/accounts", apiv1.GetAccounts)
-	v1.Post("/accounts", apiv1.SetAccount)
+	v1.Get("/students", apiv1.GetStudents)
+	v1.Post("/students", apiv1.SetStudent)
+	v1.Get("/lecturers", apiv1.GetLecturers)
+	v1.Post("/lecturers", apiv1.SetLecturer)
 	v1.Get("/courses", apiv1.GetCourses)
 	v1.Post("/courses", apiv1.SetCourses)
 	v1.Get("/classes", apiv1.GetClasses)

@@ -6,29 +6,29 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var accounts = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
+var students = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
 
-func GetAccounts(c *fiber.Ctx) error {
-	return c.JSON(accounts)
+func GetStudents(c *fiber.Ctx) error {
+	return c.JSON(students)
 }
 
-func SetAccount(c *fiber.Ctx) error {
-	NewAccount := new(model.Student)
+func SetStudent(c *fiber.Ctx) error {
+	NewStudent := new(model.Student)
 
-	c.BodyParser(NewAccount)
+	c.BodyParser(NewStudent)
 
-	NewAccount.Binusian_ID = "2440035463"
-	NewAccount.Fname = "Karsten"
-	NewAccount.Lname = "Lie"
-	NewAccount.Email = "karsten.lie@binus.ac.id"
-	NewAccount.PasswordHash = ""
-	NewAccount.Phone_No = "082139311197"
-	NewAccount.Description = "Lorem ipsum"
-	NewAccount.Profile_Img = "https://www.youtube.com/shorts/AWOyEIuVzzQ"
+	NewStudent.Binusian_ID = "2440035463"
+	NewStudent.Fname = "Karsten"
+	NewStudent.Lname = "Lie"
+	NewStudent.Email = "karsten.lie@binus.ac.id"
+	NewStudent.PasswordHash = ""
+	NewStudent.Phone_No = "082139311197"
+	NewStudent.Description = "Lorem ipsum"
+	NewStudent.Profile_Img = "https://www.youtube.com/shorts/AWOyEIuVzzQ"
 
 	// accounts = make([]model.Account, len(accounts)+1)
-	accounts = append(accounts, *NewAccount)
-	return c.JSON(NewAccount)
+	students = append(students, *NewStudent)
+	return c.JSON(NewStudent)
 }
 
 // // Array holding account struct records

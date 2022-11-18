@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var accounts = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "Student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
+var accounts = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
 
 func GetAccounts(c *fiber.Ctx) error {
 	return c.JSON(accounts)
@@ -23,7 +23,6 @@ func SetAccount(c *fiber.Ctx) error {
 	NewAccount.Email = "karsten.lie@binus.ac.id"
 	NewAccount.PasswordHash = ""
 	NewAccount.Phone_No = "082139311197"
-	NewAccount.Role = "Student"
 	NewAccount.Description = "Lorem ipsum"
 	NewAccount.Profile_Img = "https://www.youtube.com/shorts/AWOyEIuVzzQ"
 

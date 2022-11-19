@@ -1,10 +1,8 @@
 package model
 
 import (
-	"fmt"
 	// Import mysql
-	// "github.com/go-sql-driver/mysql"
-	// "database/sql"
+	"database/sql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -12,24 +10,30 @@ import (
 var dbConn *gorm.DB
 
 // Connect : Create a database sql connection
-func Connect() {
+func Connect()(*gorm.DB, error) {
 
 	// Karsten root:DSAccounts#2024
-	db, err := gorm.Open(mysql.Open("root:DSAccounts#2024@tcp(127.0.0.1:3306)/accounts_svc"))
+	// db, err := sql.Open("mysql", "root:DSAccounts#2024@tcp(127.0.0.1:3306)/accounts_svc"))
 
 	// Darren root:Scorch120403
-	//db, err := gorm.Open(mysql.Open("root:Scorch120403@tcp(127.0.0.1:3306)/accounts_svc"))
+	//db, err := sql.Open("mysql", "root:Scorch120403@tcp(127.0.0.1:3306)/accounts_svc"))
 
 	// ellyz dbadmin:password
-	//db, err := gorm.Open(mysql.Open("dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc"))
+	db, err := sql.Open("mysql", "dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc")
+
+	dbConn, err := gorm.Open(mysql.New(mysql.Config {
+		Conn: db,
+	}), &gorm.Config{})
 
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	fmt.Println("Connection Opened to Database")
+	err = db.Ping()
+	if err != nil {
+		return nil, err
+	}
+	dbConn.AutoMigrate(&Class{}, &Lecturer{}, &Student{})
+	return dbConn, nil
 
-	db.AutoMigrate(&Class{}, &Lecturer{}, &Student{})
-
-	dbConn = db
 }

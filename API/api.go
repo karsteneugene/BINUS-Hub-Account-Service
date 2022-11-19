@@ -1,11 +1,18 @@
 package api
 
 import (
+	"log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	apiv1 "github.com/karsteneugene/BINUS-Hub-Account-Service/API/v1"
 	"github.com/karsteneugene/BINUS-Hub-Account-Service/model"
+	"gorm.io/gorm"
+
+)
+
+var (
+	dbConn *gorm.DB
 )
 
 func middleware(c *fiber.Ctx) error {
@@ -18,8 +25,12 @@ func handler(c *fiber.Ctx) error {
 }
 
 func Api() *fiber.App {
-
-	model.Connect()
+	// Setup database
+	var err error
+	dbConn, err = model.Connect()
+	if err != nil {
+		log.Panicln("Unable to connect to database: ", err.Error())
+	}
 
 	// Webserver
 	app := fiber.New()

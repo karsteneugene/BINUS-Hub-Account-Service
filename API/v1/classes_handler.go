@@ -5,8 +5,6 @@ import (
 	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 )
 
-var db, err = model.Connect()
-
 func GetClasses(c *fiber.Ctx) error {
 	var class []model.Class
 	db.Find(&class)
@@ -16,11 +14,9 @@ func GetClasses(c *fiber.Ctx) error {
 func SetClasses(c *fiber.Ctx) error {
 	class := new(model.Class)
 
-	if err := c.BodyParser(class); err != nil {
+	if errClass := c.BodyParser(class); errClass != nil {
 		return err
 	}
-
 	db.Create(&class)
-
 	return c.JSON(class)
 }

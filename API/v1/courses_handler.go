@@ -9,6 +9,8 @@ import (
 var courses = []model.Course{{ID: 1, Course_ID: "COMP6705001", Course_Name: "Distributed System", Class_ID: "L5AC", Lecturer_ID: "D6405"}}
 
 func GetCourses(c *fiber.Ctx) error {
+	var courses []model.Course
+	db.Find(&courses)
 	return c.JSON(courses)
 }
 
@@ -18,6 +20,7 @@ func SetCourses(c *fiber.Ctx) error {
 	if err := c.BodyParser(course); err != nil {
 		return err
 	}
+	db.Create(&course)
 
 	return c.JSON(course)
 }

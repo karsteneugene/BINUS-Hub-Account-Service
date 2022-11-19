@@ -5,8 +5,6 @@ import (
 	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 )
 
-// var classes = []model.Class{{ID: "L5AC", Class_Desc: "Computer Science 5th Semester Class A"}}
-
 var db, err = model.Connect()
 
 func GetClasses(c *fiber.Ctx) error {

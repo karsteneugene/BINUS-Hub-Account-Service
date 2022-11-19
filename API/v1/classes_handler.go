@@ -1,25 +1,22 @@
 package apiv1
 
 import (
-	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 	"github.com/gofiber/fiber/v2"
+	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 )
 
-var classes = []model.Class{{ID: "L5AC", Class_Desc: "L4AC"}}
-
+var classes = []model.Class{{ID: "L5AC", Class_Desc: "Computer Science 5th Semester Class A"}}
 
 func GetClasses(c *fiber.Ctx) error {
 	return c.JSON(classes)
 }
 
 func SetClasses(c *fiber.Ctx) error {
-	NewClass := new(model.Class)
+	class := new(model.Class)
 
-	c.BodyParser(NewClass)
+	if err := c.BodyParser(class); err != nil {
+		return err
+	}
 
-	NewClass.ID = "L5AC"
-	NewClass.Class_Desc = "RICK ROLL"
-
-	classes = append(classes, *NewClass)
-	return c.JSON(NewClass)
+	return c.JSON(class)
 }

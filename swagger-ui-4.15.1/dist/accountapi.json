@@ -74,9 +74,9 @@
               "application/json": {
                 "example": [
                   {
-                    "student_id": "2440035596",
-                    "first_name": "Darren",
-                    "last_name": "Pangesa",
+                    "binusian_id": "2440035596",
+                    "fname": "Darren",
+                    "lname": "Pangesa",
                     "email": "darrenpangesa@binus.ac.id",
                     "phone_no": "081219201007",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
@@ -84,9 +84,9 @@
                     "class_id": "L5AC"
                   },
                   {
-                    "student_id": "2440035463",
-                    "first_name": "Karsten",
-                    "last_name": "Lie",
+                    "binusian_id": "2440035463",
+                    "fname": "Karsten",
+                    "lname": "Lie",
                     "email": "karsten.lie@binus.ac.id",
                     "phone_no": "082139311197",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
@@ -94,9 +94,9 @@
                     "class_id": "L5AC"
                   },
                   {
-                    "student_id": "2440032474",
-                    "first_name": "Ellyz",
-                    "last_name": "Yaory",
+                    "binusian_id": "2440032474",
+                    "fname": "Ellyz",
+                    "lname": "Yaory",
                     "email": "ellyz.yaory@binus.ac.id",
                     "phone_no": "087732171711",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
@@ -130,18 +130,17 @@
               },
               "examples": {
                 "single": {
-                  "value": [
+                  "value": 
                     {
-                      "student_id": "3840000001",
-                      "first_name": "Anya",
-                      "last_name": "Forger",
+                      "binusian_id": "3840000001",
+                      "fname": "Anya",
+                      "lname": "Forger",
                       "email": "anya.forger@binus.ac.id",
                       "phone_no": "082123456789",
                       "description": "Hi! I am a student.",
                       "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
                       "class_id": "L1AC"
                     }
-                  ]
                 }
               }
             }
@@ -249,27 +248,27 @@
               "application/json": {
                 "example": [
                   {
-                    "lecturer_id": "D6405",
-                    "first_name": "Ardimas",
-                    "last_name": "Purwita",
+                    "binusian_id": "D6405",
+                    "fname": "Ardimas",
+                    "lname": "Purwita",
                     "email": "ardimas.purwita@binus.ac.id",
                     "phone_no": "081112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                   },
                   {
-                    "lecturer_id": "D6211",
-                    "first_name": "Nunung",
-                    "last_name": "Qomariyah",
+                    "binsuain_id": "D6211",
+                    "fname": "Nunung",
+                    "lname": "Qomariyah",
                     "email": "nunung.qomariyah@binus.ac.id",
                     "phone_no": "082112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                   },
                   {
-                    "lecturer_id": "D3697",
-                    "first_name": "Maria",
-                    "last_name": "Astriani",
+                    "binusian_id": "D3697",
+                    "fname": "Maria",
+                    "lname": "Astriani",
                     "email": "maria.astriani@binus.ac.id",
                     "phone_no": "083112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
@@ -302,17 +301,16 @@
               },
               "examples": {
                 "single": {
-                  "value": [
+                  "value": 
                     {
-                      "lecturer_id": "D9900",
-                      "first_name": "Loid",
-                      "last_name": "Forger",
+                      "binusian_id": "D9900",
+                      "fname": "Loid",
+                      "lname": "Forger",
                       "email": "loid.forger@binus.ac.id",
                       "phone_no": "084112345678",
                       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                       "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
                     }
-                  ]
                 }
               }
             }
@@ -354,7 +352,7 @@
                 "single": {
                   "value": [
                     {
-                      "lecturer_id": "D9900",
+                      "binusian_id": "D9900",
                       "description": "I am not a spy.",
                       "profile_img": "https://www.youtube.com/shorts/K-RabQ9lPtg"
                     }
@@ -420,12 +418,12 @@
               "application/json": {
                 "example": [
                   {
-                    "class_id": "L5AC",
-                    "class_description": "Computer Science 5th Semester Class A"
+                    "id": "L5AC",
+                    "class_descr": "Computer Science 5th Semester Class A"
                   },
                   {
-                    "class_id": "L5BC",
-                    "class_description": "Computer Science 5th Semester Class A"
+                    "id": "L5BC",
+                    "class_desc": "Computer Science 5th Semester Class A"
                   }
                 ]
               }
@@ -454,12 +452,11 @@
               },
               "examples": {
                 "single": {
-                  "value": [
+                  "value":
                     {
-                      "class_id": "L5CC",
-                      "class_description": "Computer Science 5th Semester Class C"
+                      "id": "L5CC",
+                      "class_desc": "Computer Science 5th Semester Class C"
                     }
-                  ]
                 }
               }
             }
@@ -501,8 +498,8 @@
                 "single": {
                   "value": [
                     {
-                      "class_id": "L5CC",
-                      "class_description": "Non-existent class"
+                      "id": "L5CC",
+                      "class_desc": "Non-existent class"
                     }
                   ]
                 }
@@ -566,14 +563,14 @@
               "application/json": {
                 "example": [
                   {
-                    "id": "1",
+                    "id": 1,
                     "course_id": "COMP6705001",
                     "course_name": "Distributed Systems",
                     "class_id": "L5AC",
                     "lecturer_id": "D6405"
                   },
                   {
-                    "id": "2",
+                    "id": 2,
                     "course_id": "COMP6345001",
                     "course_name": "Intelligent Systems",
                     "class_id": "L5AC",
@@ -606,15 +603,14 @@
               },
               "examples": {
                 "single": {
-                  "value": [
+                  "value": 
                     {
-                      "id": "3",
+                      "id": 3,
                       "course_id": "COMP6696001",
                       "course_name": "Research Methodology in Computer Science",
                       "class_id": "L5AC",
                       "lecturer_id": "D3697"
                     }
-                  ]
                 }
               }
             }
@@ -656,7 +652,7 @@
                 "single": {
                   "value": [
                     {
-                      "id": "3",
+                      "id": 3,
                       "lecturer_id": "D6211"
                     }
                   ]
@@ -722,11 +718,11 @@
             "student_id": {
               "type": "string"
             },
-            "first_name": {
+            "fname": {
               "type": "string",
               "minLength": 1
             },
-            "last_name": {
+            "lname": {
               "type": "string",
               "minLength": 1
             },

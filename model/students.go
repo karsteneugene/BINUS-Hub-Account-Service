@@ -10,6 +10,6 @@ type Student struct {
 	Phone_No     string `json:"phone_no" xml:"phone_no" form:"phone_no" gorm:"unique"`
 	Description  string `json:"description" xml:"description" form:"description"`
 	Profile_Img  string `json:"profile_img" xml:"profile_img" form:"profile_img"`
-	Class_ID     uint   `json:"class_id" xml:"class_id" form:"class_id"`
+	Class_ID     string `json:"class_id" xml:"class_id" form:"class_id" gorm:"size:191"`
 	Class        Class  `gorm:"foreignKey:Class_ID"`
 }

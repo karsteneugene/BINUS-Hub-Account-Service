@@ -6,29 +6,20 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var students = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}
+var students = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.", Profile_Img: "https://www.youtube.com/shorts/AWOyEIuVzzQ", Class_ID: "L5AC"}}
 
 func GetStudents(c *fiber.Ctx) error {
 	return c.JSON(students)
 }
 
 func SetStudent(c *fiber.Ctx) error {
-	NewStudent := new(model.Student)
+	student := new(model.Student)
 
-	c.BodyParser(NewStudent)
+	if err := c.BodyParser(student); err != nil {
+		return err
+	}
 
-	NewStudent.Binusian_ID = "2440035463"
-	NewStudent.Fname = "Karsten"
-	NewStudent.Lname = "Lie"
-	NewStudent.Email = "karsten.lie@binus.ac.id"
-	NewStudent.PasswordHash = ""
-	NewStudent.Phone_No = "082139311197"
-	NewStudent.Description = "Lorem ipsum"
-	NewStudent.Profile_Img = "https://www.youtube.com/shorts/AWOyEIuVzzQ"
-
-	// accounts = make([]model.Account, len(accounts)+1)
-	students = append(students, *NewStudent)
-	return c.JSON(NewStudent)
+	return c.JSON(student)
 }
 
 // // Array holding account struct records

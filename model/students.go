@@ -11,5 +11,5 @@ type Student struct {
 	Description  string `json:"description" xml:"description" form:"description"`
 	Profile_Img  string `json:"profile_img" xml:"profile_img" form:"profile_img"`
 	Class_ID     string `json:"class_id" xml:"class_id" form:"class_id" gorm:"size:191"`
-	Class        Class  `gorm:"foreignKey:Class_ID"`
+	Class        Class  `json:"-" xml:"-" form:"-" gorm:"foreignKey:Class_ID"`
 }

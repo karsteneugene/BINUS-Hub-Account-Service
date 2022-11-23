@@ -21,10 +21,10 @@ func Connect() (*gorm.DB, error) {
 	// db, err := sql.Open("mysql", "root:Scorch120403@tcp(127.0.0.1:3306)/accounts_svc")
 
 	// Darren MAC root:Scorch1204
-	db, err := sql.Open("mysql", "root:Scorch1204@tcp(127.0.0.1:3306)/accounts_svc")
+	// db, err := sql.Open("mysql", "root:Scorch1204@tcp(127.0.0.1:3306)/accounts_svc")
 
 	// ellyz dbadmin:password
-	//db, err := sql.Open("mysql", "dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc")
+	db, err := sql.Open("mysql", "dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc")
 
 	dbConn, err := gorm.Open(mysql.New(mysql.Config{
 		Conn: db,

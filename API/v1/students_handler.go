@@ -6,8 +6,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-var students = []model.Student{{Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.", Profile_Img: "https://www.youtube.com/shorts/AWOyEIuVzzQ", Class_ID: "L5AC"}}
-
 func GetStudents(c *fiber.Ctx) error {
 	var students []model.Student
 	db.Find(&students)

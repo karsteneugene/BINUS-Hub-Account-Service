@@ -11,12 +11,40 @@ func GetClasses(c *fiber.Ctx) error {
 	return c.JSON(class)
 }
 
-func SetClasses(c *fiber.Ctx) error {
+func SetClass(c *fiber.Ctx) error {
 	class := new(model.Class)
 
 	if errClass := c.BodyParser(class); errClass != nil {
-		return err
+		return errClass
 	}
 	db.Create(&class)
 	return c.JSON(class)
 }
+
+func UpdateClass(c *fiber.Ctx) error {
+	class := new(model.Class)
+
+	if err := c.BodyParser(class); err != nil {
+		return err
+	}
+
+	db.Model(&model.Class{}).Where("id = ?", class.ID).Update("class_desc", class.Class_Desc)
+	return c.JSON(class)
+}
+
+// func UpdateClass(c *fiber.Ctx) error {
+// 	id := c.Params("id")
+
+// 	class := new(model.Class)
+// 	db.First(&class, id)
+// 	if err := c.BodyParser(&class); err != nil {
+// 		return c.SendStatus(503)
+
+// 	}
+
+// 	if class.ID != "" {
+// 		db.Update("class_desc", class.Class_Desc)
+
+// 	}
+// 	return c.JSON(class)
+// }

@@ -23,6 +23,17 @@ func SetStudent(c *fiber.Ctx) error {
 	return c.JSON(student)
 }
 
+func UpdateStudent(c *fiber.Ctx) error {
+	student := new(model.Student)
+
+	if err := c.BodyParser(student); err != nil {
+		return err
+	}
+
+	db.Model(&model.Student{}).Where("binusian_id = ?", student.Binusian_ID).Updates(model.Student{Fname: student.Fname, Lname: student.Lname, Email: student.Email, Phone_No: student.Phone_No, Description: student.Description, Profile_Img: student.Profile_Img})
+	return c.JSON(student)
+}
+
 // // Array holding account struct records
 
 // var accounts = []model.Account{{ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}

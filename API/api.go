@@ -2,13 +2,13 @@ package api
 
 import (
 	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	apiv1 "github.com/karsteneugene/BINUS-Hub-Account-Service/API/v1"
 	"github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 	"gorm.io/gorm"
-
 )
 
 var (
@@ -46,12 +46,16 @@ func Api() *fiber.App {
 	// Check health of v1 path
 	v1.Get("/students", apiv1.GetStudents)
 	v1.Post("/students", apiv1.SetStudent)
+	v1.Patch("/students", apiv1.UpdateStudent)
 	v1.Get("/lecturers", apiv1.GetLecturers)
 	v1.Post("/lecturers", apiv1.SetLecturer)
+	v1.Patch("/lecturers", apiv1.UpdateLecturer)
 	v1.Get("/courses", apiv1.GetCourses)
-	v1.Post("/courses", apiv1.SetCourses)
+	v1.Post("/courses", apiv1.SetCourse)
+	v1.Patch("/courses", apiv1.UpdateCourse)
 	v1.Get("/classes", apiv1.GetClasses)
-	v1.Post("/classes", apiv1.SetClasses)
+	v1.Post("/classes", apiv1.SetClass)
+	v1.Patch("/classes", apiv1.UpdateClass)
 
 	return app
 }

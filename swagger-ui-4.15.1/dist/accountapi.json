@@ -78,6 +78,7 @@
                     "fname": "Darren",
                     "lname": "Pangesa",
                     "email": "darrenpangesa@binus.ac.id",
+                    "password": "hello1",
                     "phone_no": "081219201007",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
@@ -88,6 +89,7 @@
                     "fname": "Karsten",
                     "lname": "Lie",
                     "email": "karsten.lie@binus.ac.id",
+                    "password": "hello2",
                     "phone_no": "082139311197",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
@@ -98,6 +100,7 @@
                     "fname": "Ellyz",
                     "lname": "Yaory",
                     "email": "ellyz.yaory@binus.ac.id",
+                    "password": "hello3",
                     "phone_no": "087732171711",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
@@ -136,6 +139,7 @@
                       "fname": "Anya",
                       "lname": "Forger",
                       "email": "anya.forger@binus.ac.id",
+                      "password": "peanut",
                       "phone_no": "082123456789",
                       "description": "Hi! I am a student.",
                       "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ",
@@ -251,6 +255,7 @@
                     "fname": "Ardimas",
                     "lname": "Purwita",
                     "email": "ardimas.purwita@binus.ac.id",
+                    "password": "hello1",
                     "phone_no": "081112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
@@ -260,6 +265,7 @@
                     "fname": "Nunung",
                     "lname": "Qomariyah",
                     "email": "nunung.qomariyah@binus.ac.id",
+                    "password": "hello2",
                     "phone_no": "082112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
@@ -269,6 +275,7 @@
                     "fname": "Maria",
                     "lname": "Astriani",
                     "email": "maria.astriani@binus.ac.id",
+                    "password": "hello3",
                     "phone_no": "083112345678",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                     "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
@@ -306,6 +313,7 @@
                       "fname": "Loid",
                       "lname": "Forger",
                       "email": "loid.forger@binus.ac.id",
+                      "password": "twilight",
                       "phone_no": "084112345678",
                       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a ligula.",
                       "profile_img": "https://www.youtube.com/shorts/AWOyEIuVzzQ"
@@ -726,6 +734,10 @@
               "type": "string",
               "minLength": 1
             },
+            "password": {
+              "type": "string",
+              "minLength": 1
+            },
             "phone_no": {
               "type": "string",
               "minLength": 12
@@ -761,6 +773,10 @@
               "minLength": 1
             },
             "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "password": {
               "type": "string",
               "minLength": 1
             },

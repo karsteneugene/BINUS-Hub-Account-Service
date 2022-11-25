@@ -19,6 +19,8 @@ func SetStudent(c *fiber.Ctx) error {
 		return err
 	}
 
+	student.PasswordHash, _ = HashPassword(student.PasswordHash)
+
 	db.Create(&student)
 	return c.JSON(student)
 }
@@ -30,7 +32,9 @@ func UpdateStudent(c *fiber.Ctx) error {
 		return err
 	}
 
-	db.Model(&model.Student{}).Where("binusian_id = ?", student.Binusian_ID).Updates(model.Student{Fname: student.Fname, Lname: student.Lname, Email: student.Email, Phone_No: student.Phone_No, Description: student.Description, Profile_Img: student.Profile_Img})
+	student.PasswordHash, _ = HashPassword(student.PasswordHash)
+
+	db.Model(&model.Student{}).Where("binusian_id = ?", student.Binusian_ID).Updates(model.Student{Fname: student.Fname, Lname: student.Lname, Email: student.Email, PasswordHash: student.PasswordHash, Phone_No: student.Phone_No, Description: student.Description, Profile_Img: student.Profile_Img})
 	return c.JSON(student)
 }
 

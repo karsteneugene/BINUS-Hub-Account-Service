@@ -33,3 +33,4 @@ func UpdateCourse(c *fiber.Ctx) error {
 	db.Model(&model.Course{}).Where("id = ?", course.ID).Updates(model.Course{Course_ID: course.Course_ID, Course_Name: course.Course_Name, Class_ID: course.Class_ID, Lecturer_ID: course.Lecturer_ID})
 	return c.JSON(course)
 }
+

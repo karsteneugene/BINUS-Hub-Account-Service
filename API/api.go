@@ -53,6 +53,8 @@ func Api() *fiber.App {
 	v1.Get("/courses", apiv1.GetCourses)
 	v1.Post("/courses", apiv1.SetCourse)
 	v1.Patch("/courses", apiv1.UpdateCourse)
+	v1.Patch("/courses/:id", apiv1.DeleteCourse)
+
 	v1.Get("/classes", apiv1.GetClasses)
 	v1.Post("/classes", apiv1.SetClass)
 	v1.Patch("/classes", apiv1.UpdateClass)

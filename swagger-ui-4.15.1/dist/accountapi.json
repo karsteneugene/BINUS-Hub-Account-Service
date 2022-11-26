@@ -207,7 +207,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/students/{id}": {
+       "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of student to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
       "delete": {
         "security": [
           {
@@ -380,7 +391,18 @@
             }
           }
         }
-      },
+      }
+    },
+    "/lecturers/{id}": {
+      "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of lecturer to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
       "delete": {
         "security": [
           {
@@ -524,8 +546,19 @@
             }
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/classes/{id}": {
+      "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of class to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
+       "delete": {
         "security": [
           {
             "Authorization": []
@@ -677,8 +710,19 @@
             }
           }
         }
-      },
+      }
+    },
+    "/courses/{id}": {
       "delete": {
+        "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of course to fetch",
+          "schema": {
+            "type": "integer"
+          } 
+          }],
         "security": [
           {
             "Authorization": []

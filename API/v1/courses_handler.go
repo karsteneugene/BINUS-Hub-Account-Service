@@ -34,3 +34,13 @@ func UpdateCourse(c *fiber.Ctx) error {
 	return c.JSON(course)
 }
 
+func DeleteCourse(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var course model.Course
+	db.First(&course, id)
+	if err := c.BodyParser(course); err != nil {
+		return err
+	}
+	db.Delete(&course)
+	return c.JSON(course)
+}

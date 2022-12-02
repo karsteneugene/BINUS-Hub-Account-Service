@@ -38,6 +38,16 @@ func UpdateStudent(c *fiber.Ctx) error {
 	return c.JSON(student)
 }
 
+func DeleteStudent(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var student model.Student
+	student.Binusian_ID = id
+	db.First(&student)
+	db.Delete(&student)
+	return c.JSON(student)
+}
+
+
 // // Array holding account struct records
 
 // var accounts = []model.Account{{ID: 0, Binusian_ID: "2440035596", Fname: "Darren", Lname: "Pangesa", Email: "darren.pangesa@binus.ac.id", PasswordHash: "", Phone_No: "081219201007", Role: "student", Description: "Lorem ipsum", Profile_Img: "<path of image>"}}

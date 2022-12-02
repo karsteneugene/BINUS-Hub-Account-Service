@@ -32,6 +32,15 @@ func UpdateClass(c *fiber.Ctx) error {
 	return c.JSON(class)
 }
 
+func DeleteClass(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var class model.Class
+	class.ID = id
+	db.First(&class)
+	db.Delete(&class)
+	return c.JSON(class)
+}
+
 
 // func UpdateClass(c *fiber.Ctx) error {
 // 	id := c.Params("id")

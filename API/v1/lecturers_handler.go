@@ -37,3 +37,12 @@ func UpdateLecturer(c *fiber.Ctx) error {
 	db.Model(&model.Lecturer{}).Where("lecturer_id = ?", lecturer.Lecturer_ID).Updates(model.Lecturer{Fname: lecturer.Fname, Lname: lecturer.Lname, Email: lecturer.Email, PasswordHash: lecturer.PasswordHash, Phone_No: lecturer.Phone_No, Description: lecturer.Description, Profile_Img: lecturer.Profile_Img})
 	return c.JSON(lecturer)
 }
+
+func DeleteLecturer(c *fiber.Ctx) error {
+	id := c.Params("id")
+	var lecturer model.Lecturer
+	lecturer.Lecturer_ID = id
+	db.First(&lecturer)
+	db.Delete(&lecturer)
+	return c.JSON(lecturer)
+}

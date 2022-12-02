@@ -25,16 +25,28 @@ func SetStudent(c *fiber.Ctx) error {
 	return c.JSON(student)
 }
 
+// func UpdateStudent(c *fiber.Ctx) error {
+// 	student := new(model.Student)
+
+// 	if err := c.BodyParser(student); err != nil {
+// 		return err
+// 	}
+
+// 	student.PasswordHash, _ = HashPassword(student.PasswordHash)
+
+// 	db.Model(&model.Student{}).Where("binusian_id = ?", student.Binusian_ID).Updates(model.Student{Fname: student.Fname, Lname: student.Lname, Email: student.Email, PasswordHash: student.PasswordHash, Phone_No: student.Phone_No, Description: student.Description, Profile_Img: student.Profile_Img})
+// 	return c.JSON(student)
+// }
+
 func UpdateStudent(c *fiber.Ctx) error {
-	student := new(model.Student)
+	id := c.Params("id")
+	var student model.Student
+	db.First(&student, id)
+	if err := c.BodyParser(&student); err != nil {
+		return c.SendStatus(503)
 
-	if err := c.BodyParser(student); err != nil {
-		return err
 	}
-
-	student.PasswordHash, _ = HashPassword(student.PasswordHash)
-
-	db.Model(&model.Student{}).Where("binusian_id = ?", student.Binusian_ID).Updates(model.Student{Fname: student.Fname, Lname: student.Lname, Email: student.Email, PasswordHash: student.PasswordHash, Phone_No: student.Phone_No, Description: student.Description, Profile_Img: student.Profile_Img})
+	db.Where("id = ?", id).Updates(&student)
 	return c.JSON(student)
 }
 

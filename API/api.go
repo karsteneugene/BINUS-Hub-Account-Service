@@ -46,22 +46,22 @@ func Api() *fiber.App {
 	// Check health of v1 path
 	v1.Get("/students", apiv1.GetStudents)
 	v1.Post("/students", apiv1.SetStudent)
-	v1.Patch("/students", apiv1.UpdateStudent)
+	v1.Patch("/students/:id", apiv1.UpdateStudent)
 	v1.Delete("/students/:id", apiv1.DeleteStudent)
 
 	v1.Get("/lecturers", apiv1.GetLecturers)
 	v1.Post("/lecturers", apiv1.SetLecturer)
-	v1.Patch("/lecturers", apiv1.UpdateLecturer)
+	v1.Patch("/lecturers/:id", apiv1.UpdateLecturer)
 	v1.Delete("/lecturers/:id", apiv1.DeleteLecturer)
 
 	v1.Get("/courses", apiv1.GetCourses)
 	v1.Post("/courses", apiv1.SetCourse)
-	v1.Patch("/courses", apiv1.UpdateCourse)
+	v1.Patch("/courses/:id", apiv1.UpdateCourse)
 	v1.Delete("/courses/:id", apiv1.DeleteCourse)
 
 	v1.Get("/classes", apiv1.GetClasses)
 	v1.Post("/classes", apiv1.SetClass)
-	v1.Patch("/classes", apiv1.UpdateClass)	
+	v1.Patch("/classes/:id", apiv1.UpdateClass)	
 	v1.Delete("/classes/:id", apiv1.DeleteClass)
 
 	return app

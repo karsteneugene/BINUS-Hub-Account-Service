@@ -26,14 +26,26 @@ func SetCourse(c *fiber.Ctx) error {
 	return c.JSON(course)
 }
 
+// func UpdateCourse(c *fiber.Ctx) error {
+// 	course := new(model.Course)
+
+// 	if err := c.BodyParser(course); err != nil {
+// 		return err
+// 	}
+
+// 	db.Model(&model.Course{}).Where("id = ?", course.ID).Updates(model.Course{Course_ID: course.Course_ID, Course_Name: course.Course_Name, Class_ID: course.Class_ID, Lecturer_ID: course.Lecturer_ID})
+// 	return c.JSON(course)
+// }
+
 func UpdateCourse(c *fiber.Ctx) error {
-	course := new(model.Course)
+	id := c.Params("id")
+	var course model.Course
+	db.First(&course, id)
+	if err := c.BodyParser(&course); err != nil {
+		return c.SendStatus(503)
 
-	if err := c.BodyParser(course); err != nil {
-		return err
 	}
-
-	db.Model(&model.Course{}).Where("id = ?", course.ID).Updates(model.Course{Course_ID: course.Course_ID, Course_Name: course.Course_Name, Class_ID: course.Class_ID, Lecturer_ID: course.Lecturer_ID})
+	db.Where("id = ?", id).Updates(&course)
 	return c.JSON(course)
 }
 

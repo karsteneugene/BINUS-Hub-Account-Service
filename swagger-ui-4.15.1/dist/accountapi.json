@@ -162,6 +162,41 @@
             }
           }
         }
+      }
+    },
+    "/students/{id}": {
+       "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of student to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a student account",
+        "description": "Delete a student account",
+        "responses": {
+          "200": {
+            "description": "Student account is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The student account was successfully deleted."
+                }
+              }
+            }
+          }
+        }
       },
       "patch": {
         "security": [
@@ -202,41 +237,6 @@
               "application/json": {
                 "example": {
                   "message": "The student account was successfully updated."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/students/{id}": {
-       "parameters": [{ 
-          "in": "path", 
-          "name": "id", 
-          "required": true,
-          "description": "ID of student to fetch",
-          "schema": {
-            "type": "string"
-          } 
-          }],
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": [
-          "Delete"
-        ],
-        "summary": "Delete a student account",
-        "description": "Delete a student account",
-        "responses": {
-          "200": {
-            "description": "Student account is deleted",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "The student account was successfully deleted."
                 }
               }
             }
@@ -346,6 +346,41 @@
             }
           }
         }
+      }
+    },
+    "/lecturers/{id}": {
+      "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of lecturer to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a lecturer account",
+        "description": "Delete a lecturer account",
+        "responses": {
+          "200": {
+            "description": "Lecturer account is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The lecturer account was successfully deleted."
+                }
+              }
+            }
+          }
+        }
       },
       "patch": {
         "security": [
@@ -386,41 +421,6 @@
               "application/json": {
                 "example": {
                   "message": "The lecturer account was successfully updated."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/lecturers/{id}": {
-      "parameters": [{ 
-          "in": "path", 
-          "name": "id", 
-          "required": true,
-          "description": "ID of lecturer to fetch",
-          "schema": {
-            "type": "string"
-          } 
-          }],
-      "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": [
-          "Delete"
-        ],
-        "summary": "Delete a lecturer account",
-        "description": "Delete a lecturer account",
-        "responses": {
-          "200": {
-            "description": "Lecturer account is deleted",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "The lecturer account was successfully deleted."
                 }
               }
             }
@@ -502,8 +502,43 @@
             }
           }
         }
+      }
+    },
+    "/classes/{id}": {
+      "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of class to fetch",
+          "schema": {
+            "type": "string"
+          } 
+          }],
+       "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a class",
+        "description": "Delete a class",
+        "responses": {
+          "200": {
+            "description": "Class is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The class was successfully deleted."
+                }
+              }
+            }
+          }
+        }
       },
-      "patch": {
+       "patch": {
         "security": [
           {
             "Authorization": []
@@ -541,41 +576,6 @@
               "application/json": {
                 "example": {
                   "message": "The class was successfully updated."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/classes/{id}": {
-      "parameters": [{ 
-          "in": "path", 
-          "name": "id", 
-          "required": true,
-          "description": "ID of class to fetch",
-          "schema": {
-            "type": "string"
-          } 
-          }],
-       "delete": {
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": [
-          "Delete"
-        ],
-        "summary": "Delete a class",
-        "description": "Delete a class",
-        "responses": {
-          "200": {
-            "description": "Class is deleted",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "The class was successfully deleted."
                 }
               }
             }
@@ -666,8 +666,43 @@
             }
           }
         }
+      }
+    },
+    "/courses/{id}": {
+       "parameters": [{ 
+          "in": "path", 
+          "name": "id", 
+          "required": true,
+          "description": "ID of course to fetch",
+          "schema": {
+            "type": "integer"
+          } 
+          }],
+      "delete": {
+        "security": [
+          {
+            "Authorization": []
+          }
+        ],
+        "tags": [
+          "Delete"
+        ],
+        "summary": "Delete a course",
+        "description": "Delete a course",
+        "responses": {
+          "200": {
+            "description": "Course is deleted",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The course was successfully deleted."
+                }
+              }
+            }
+          }
+        }
       },
-      "patch": {
+       "patch": {
         "security": [
           {
             "Authorization": []
@@ -705,41 +740,6 @@
               "application/json": {
                 "example": {
                   "message": "The course was successfully updated."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/courses/{id}": {
-      "delete": {
-        "parameters": [{ 
-          "in": "path", 
-          "name": "id", 
-          "required": true,
-          "description": "ID of course to fetch",
-          "schema": {
-            "type": "integer"
-          } 
-          }],
-        "security": [
-          {
-            "Authorization": []
-          }
-        ],
-        "tags": [
-          "Delete"
-        ],
-        "summary": "Delete a course",
-        "description": "Delete a course",
-        "responses": {
-          "200": {
-            "description": "Course is deleted",
-            "content": {
-              "application/json": {
-                "example": {
-                  "message": "The course was successfully deleted."
                 }
               }
             }

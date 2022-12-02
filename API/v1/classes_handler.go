@@ -21,14 +21,26 @@ func SetClass(c *fiber.Ctx) error {
 	return c.JSON(class)
 }
 
+// func UpdateClass(c *fiber.Ctx) error {
+// 	class := new(model.Class)
+
+// 	if err := c.BodyParser(class); err != nil {
+// 		return err
+// 	}
+
+// 	db.Model(&model.Class{}).Where("id = ?", class.ID).Update("class_desc", class.Class_Desc)
+// 	return c.JSON(class)
+// }
+
 func UpdateClass(c *fiber.Ctx) error {
-	class := new(model.Class)
+	id := c.Params("id")
+	var class model.Class
+	db.First(&class, id)
+	if err := c.BodyParser(&class); err != nil {
+		return c.SendStatus(503)
 
-	if err := c.BodyParser(class); err != nil {
-		return err
 	}
-
-	db.Model(&model.Class{}).Where("id = ?", class.ID).Update("class_desc", class.Class_Desc)
+	db.Where("id = ?", id).Updates(&class)
 	return c.JSON(class)
 }
 

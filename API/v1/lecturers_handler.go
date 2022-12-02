@@ -1,6 +1,7 @@
 package apiv1
 
 import (
+	"fmt"
 	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 
 	"github.com/gofiber/fiber/v2"
@@ -44,9 +45,9 @@ func UpdateLecturer(c *fiber.Ctx) error {
 	db.First(&lecturer, id)
 	if err := c.BodyParser(&lecturer); err != nil {
 		return c.SendStatus(503)
-
 	}
-	db.Where("id = ?", id).Updates(&lecturer)
+	fmt.Println(id)
+	db.Where("lecturer_id = ?", id).Updates(&lecturer)
 	return c.JSON(lecturer)
 }
 

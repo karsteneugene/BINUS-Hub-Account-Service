@@ -46,7 +46,7 @@ func UpdateStudent(c *fiber.Ctx) error {
 		return c.SendStatus(503)
 
 	}
-	db.Where("id = ?", id).Updates(&student)
+	db.Where("binusian_id = ?", id).Updates(&student)
 	return c.JSON(student)
 }
 

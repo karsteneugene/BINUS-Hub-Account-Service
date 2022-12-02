@@ -1,6 +1,9 @@
 package apiv1
 
 import (
+	"fmt"
+	"strconv"
+
 	model "github.com/karsteneugene/BINUS-Hub-Account-Service/model"
 
 	"github.com/gofiber/fiber/v2"
@@ -35,12 +38,16 @@ func UpdateCourse(c *fiber.Ctx) error {
 }
 
 func DeleteCourse(c *fiber.Ctx) error {
-	id := c.Params("id")
-	var course model.Course
-	db.First(&course, id)
-	if err := c.BodyParser(course); err != nil {
-		return err
+	idStr := c.Params("id")
+	id, err := strconv.ParseUint(idStr, 10, 0)
+	if err != nil {
+		fmt.Println(err)
 	}
+	fmt.Println(id)
+
+	var course model.Course
+	course.ID = uint(id)
+	db.First(&course)
 	db.Delete(&course)
 	return c.JSON(course)
 }

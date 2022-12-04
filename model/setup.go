@@ -2,6 +2,7 @@ package model
 
 import (
 	// Import mysql
+	"os"
 
 	"database/sql"
 
@@ -24,7 +25,10 @@ func Connect() (*gorm.DB, error) {
 	// db, err := sql.Open("mysql", "root:Scorch1204@tcp(127.0.0.1:3306)/accounts_svc")
 
 	// ellyz dbadmin:password
-	db, err := sql.Open("mysql", "dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc")
+	// db, err := sql.Open("mysql", "dbadmin:password@tcp(127.0.0.1:3306)/accounts_svc")
+
+	// Docker accounts_db:accounts_svc
+	db, err := sql.Open("mysql", "root:accounts_svc@tcp("+os.Getenv("DB_HOST")+":3306)/accounts_svc")
 
 	dbConn, err := gorm.Open(mysql.New(mysql.Config{
 		Conn: db,

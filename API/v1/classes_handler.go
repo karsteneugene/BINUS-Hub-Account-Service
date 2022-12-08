@@ -53,7 +53,6 @@ func DeleteClass(c *fiber.Ctx) error {
 	return c.JSON(class)
 }
 
-
 // func UpdateClass(c *fiber.Ctx) error {
 // 	id := c.Params("id")
 
